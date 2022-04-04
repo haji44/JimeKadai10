@@ -41,7 +41,7 @@ class PrefectureListViewController: UITableViewController {
             cell.backgroundColor = UIColor(named: "Green")
         case .blue:
             cell.backgroundColor = UIColor(named: "Blue")
-        case .none:
+        default:
             break
         }
         return cell
