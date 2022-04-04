@@ -33,14 +33,14 @@ class PrefectureListViewController: UITableViewController {
         cell.detailTextLabel?.text = "\(indexPath.row + 1)番目の都道府県です"
         cell.selectionStyle = .none
 
-        let color = BackGroundColor(rawValue: indexPath.row % 3)
-        switch color {
+        let backgroundColor = BackGroundColor(rawValue: indexPath.row % 3)
+        switch backgroundColor {
         case .red:
-            cell.backgroundColor = UIColor(named: "Red")
+            cell.backgroundColor = backgroundColor?.color
         case .green:
-            cell.backgroundColor = UIColor(named: "Green")
+            cell.backgroundColor = backgroundColor?.color
         case .blue:
-            cell.backgroundColor = UIColor(named: "Blue")
+            cell.backgroundColor = backgroundColor?.color
         default:
             break
         }
@@ -54,4 +54,15 @@ class PrefectureListViewController: UITableViewController {
 
 enum BackGroundColor: Int {
     case red, green, blue
+
+    var color: UIColor {
+        switch self {
+        case .red:
+            return UIColor(named: "Red")!
+        case .green:
+            return UIColor(named: "Green")!
+        case .blue:
+            return UIColor(named: "Blue")!
+        }
+    }
 }
