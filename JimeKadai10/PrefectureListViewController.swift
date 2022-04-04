@@ -11,7 +11,7 @@ class PrefectureListViewController: UITableViewController {
 
     private let prefectures = ["北海道", "青森県", "岩手県", "宮城県", "秋田県",
                        "山形県", "福島県", "茨城県", "栃木県", "群馬県",
-                       "埼玉県", "千葉県", "東京都", "神奈川県","新潟県",
+                       "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県",
                        "富山県", "石川県", "福井県", "山梨県", "長野県",
                        "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県",
                        "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県",
@@ -28,19 +28,19 @@ class PrefectureListViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "prefectureCell")
         cell.textLabel?.text = "\(prefectures[indexPath.row])"
         cell.detailTextLabel?.text = "\(indexPath.row + 1)番目の都道府県です"
         cell.selectionStyle = .none
+
         let color = BackGroundColor(rawValue: indexPath.row % 3)
         switch color {
-        case .pink:
-            cell.backgroundColor = UIColor.systemPink
+        case .red:
+            cell.backgroundColor = UIColor(named: "Red")
         case .green:
-            cell.backgroundColor = UIColor.systemGreen
+            cell.backgroundColor = UIColor(named: "Green")
         case .blue:
-            cell.backgroundColor = UIColor.systemBlue
+            cell.backgroundColor = UIColor(named: "Blue")
         case .none:
             break
         }
@@ -53,5 +53,5 @@ class PrefectureListViewController: UITableViewController {
 }
 
 enum BackGroundColor: Int {
-    case pink, green, blue
+    case red, green, blue
 }
