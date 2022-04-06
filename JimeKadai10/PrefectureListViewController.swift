@@ -32,27 +32,20 @@ class PrefectureListViewController: UITableViewController {
         cell.detailTextLabel?.text = "\(indexPath.row + 1)番目の都道府県です"
         cell.selectionStyle = .none
 
-        let backgroundColor = BackGroundColor(rawValue: indexPath.row % 3)?.color
-        cell.backgroundColor = backgroundColor
+        switch indexPath.row % 3 {
+        case 0:
+            cell.backgroundColor = UIColor(named: "Red")
+        case 1:
+            cell.backgroundColor = UIColor(named: "Green")
+        case 2:
+            cell.backgroundColor = UIColor(named: "Blue")
+        default:
+            break
+        }
         return cell
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return prefectures.count
-    }
-}
-
-enum BackGroundColor: Int {
-    case red, green, blue
-
-    var color: UIColor {
-        switch self {
-        case .red:
-            return UIColor(named: "Red")!
-        case .green:
-            return UIColor(named: "Green")!
-        case .blue:
-            return UIColor(named: "Blue")!
-        }
     }
 }
