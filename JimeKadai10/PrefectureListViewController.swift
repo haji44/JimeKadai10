@@ -23,29 +23,23 @@ class PrefectureListViewController: UITableViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.allowsSelection = false
     }
+
+    private let backgroundColors: [UIColor] = ["Red", "Green", "Blue"].map { UIColor(named: $0)! }
 
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "prefectureCell")
         cell.textLabel?.text = "\(prefectures[indexPath.row])"
         cell.detailTextLabel?.text = "\(indexPath.row + 1)番目の都道府県です"
-        cell.selectionStyle = .none
 
-        switch indexPath.row % 3 {
-        case 0:
-            cell.backgroundColor = UIColor(named: "Red")
-        case 1:
-            cell.backgroundColor = UIColor(named: "Green")
-        case 2:
-            cell.backgroundColor = UIColor(named: "Blue")
-        default:
-            break
-        }
+        cell.backgroundColor = backgroundColors[indexPath.row % backgroundColors.count]
+
         return cell
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return prefectures.count
+        prefectures.count
     }
 }
